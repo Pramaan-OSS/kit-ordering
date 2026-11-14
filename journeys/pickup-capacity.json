@@ -1,0 +1,20 @@
+{
+  "items": [
+    {
+      "id": "pickup-capacity",
+      "label": "Manage opening hours and pickup slot capacity.",
+      "steps": [
+        {
+          "enterAs": "owner"
+        },
+        {
+          "goto": "/manage"
+        },
+        {
+          "expectHeading": "Manage the kitchen"
+        }
+      ]
+    }
+  ],
+  "names": {}
+}

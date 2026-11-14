@@ -1,0 +1,20 @@
+{
+  "items": [
+    {
+      "id": "add-kitchen-staff",
+      "label": "Add a staff account with kitchen-only access.",
+      "steps": [
+        {
+          "enterAs": "owner"
+        },
+        {
+          "goto": "/manage"
+        },
+        {
+          "expectHeading": "Manage the kitchen"
+        }
+      ]
+    }
+  ],
+  "names": {}
+}

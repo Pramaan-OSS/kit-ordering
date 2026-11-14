@@ -1,0 +1,17 @@
+{
+  "items": [
+    {
+      "id": "browse-menu",
+      "label": "Browse the menu and opening hours.",
+      "steps": [
+        {
+          "goto": "/"
+        },
+        {
+          "expectHeading": "Good food. Your time."
+        }
+      ]
+    }
+  ],
+  "names": {}
+}

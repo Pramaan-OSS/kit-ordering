@@ -1,0 +1,20 @@
+{
+  "items": [
+    {
+      "id": "kitchen-board",
+      "label": "See the paid order board.",
+      "steps": [
+        {
+          "enterAs": "owner"
+        },
+        {
+          "goto": "/kitchen"
+        },
+        {
+          "expectHeading": "Kitchen board"
+        }
+      ]
+    }
+  ],
+  "names": {}
+}

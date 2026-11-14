@@ -1,0 +1,17 @@
+{
+  "items": [
+    {
+      "id": "signed-out",
+      "label": "A signed-out visitor sees no order list.",
+      "steps": [
+        {
+          "goto": "/orders"
+        },
+        {
+          "expectHeading": "My orders"
+        }
+      ]
+    }
+  ],
+  "names": {}
+}

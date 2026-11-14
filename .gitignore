@@ -1,0 +1,9 @@
+node_modules/
+.next/
+.runtime/
+.evidence/
+.scratch/
+.env*
+*.tsbuildinfo
+next-env.d.ts
+app/routes.generated.ts

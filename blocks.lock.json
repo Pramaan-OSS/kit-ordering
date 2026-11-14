@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "blocks": [
+    {
+      "id": "theme",
+      "version": "0.1.0",
+      "source": "Pramaan-OSS/blocks",
+      "sourceCommit": "4577cabca086a430563c196b6cd86cc919f873c0",
+      "sourcePath": "registry/theme",
+      "licence": "MIT",
+      "sourceHashes": {
+        "registry/theme/lib/pramaan/fonts.ts": "de90da679c962d19170f0dcd78f69558b435dd8a8aeba8b3bc176ecc754ff410",
+        "theme.css": "39e6aafb751ce69c964c0db7917af1b5112d9e64d0f9a5b2e38f48b1223bbdbc"
+      }
+    },
+    {
+      "id": "upload",
+      "version": "0.1.0",
+      "source": "Pramaan-OSS/blocks",
+      "sourceCommit": "4577cabca086a430563c196b6cd86cc919f873c0",
+      "sourcePath": "registry/upload",
+      "licence": "MIT",
+      "sourceHashes": {
+        "registry/upload/README.md": "6e91db450895e2ea4bc2521f28953f12b829440a24ccf052391edec3acd9e666",
+        "registry/upload/lib/pramaan/upload.ts": "c67ac1af5f470eb128ee472f8267b53ad18a882c549be4fb72435165b4eeb3ab",
+        "registry/upload/components/pramaan/upload/uploader.tsx": "01ddcefb12b6e8898b8251a516f13058d9d737aa5254f9647375690d987c478c"
+      }
+    },
+    {
+      "id": "checkout",
+      "version": "0.1.0",
+      "source": "Pramaan-OSS/blocks",
+      "sourceCommit": "4577cabca086a430563c196b6cd86cc919f873c0",
+      "sourcePath": "registry/checkout",
+      "licence": "MIT",
+      "sourceHashes": {
+        "registry/checkout/README.md": "22aeef6aef4e2b6e3fa6adb3c13b4d7a75d3fce21da34ac6c6eaa40f6ee9db47",
+        "registry/checkout/lib/pramaan/checkout.ts": "f73f71b5b2b2e390b93ddadd740fff32d0b3f3108ead2937b7fc6c917ab80b83",
+        "registry/checkout/components/pramaan/checkout/checkout-button.tsx": "11b5271ed8ae4627899b89ff251cf04690265ee9dde5625b7800e02dde21bb3c"
+      }
+    },
+    {
+      "id": "roles",
+      "version": "0.1.0",
+      "source": "Pramaan-Dev/product-loop",
+      "sourceCommit": "fbc5505d5dffed1e5410359ff65d59d21c872d21",
+      "sourcePath": "blocks/roles",
+      "sourceHashes": {
+        "BLOCK.md": "10b6565b67973583dae140afe35b264dd8b2ad0b14f502c943a10a7f5343632d",
+        "files/lib/roles/http.ts": "4d3310796b8eb9f3356b5b980963a9ef0aad340f2b9a9c57d3639b3e1917b1e4",
+        "pramaan.block.json": "5f8231d9eb063f5714a67297dbada669a94927315a3a9a9d1539727e5730f9bc"
+      }
+    }
+  ],
+  "adaptations": {
+    "theme": "Bundled fonts and theme tokens reused from the starter. No network font loads.",
+    "roles": "lib/roles/http.ts retained byte for byte. Account role checks restrict kitchen staff to the board, owners manage the menu, customers read only their own orders.",
+    "checkout": "Rules adapted to the platform HTTP door in lib/pramaan.ts and lib/ordering/payments.ts. Server prices and option deltas only; captured payment amount and currency checked. Test account configuration required. No SDK copied.",
+    "upload": "Rules adapted to the files module in lib/ordering/storage.ts and app/api/photos/[id]/route.ts. Owner-only bounded upload, image signature checks, server-generated keys; no SDK copied."
+  }
+}

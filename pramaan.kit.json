@@ -1,0 +1,237 @@
+{
+  "id": "ordering",
+  "version": "0.1.0",
+  "title": "Online ordering",
+  "summary": "A cafe takes pickup orders with options, test checkout and a live kitchen board.",
+  "category": "business-operations",
+  "stack": {
+    "contract": "1",
+    "template": "data",
+    "next": "16.3.6",
+    "react": "19.3.0",
+    "node": "24.18.0",
+    "packageManager": "pnpm@11.15.1"
+  },
+  "licence": "MIT",
+  "provenance": {
+    "mode": "derived",
+    "starter": "Pramaan-Dev/product-loop@370419379645405019af029fa08a75680ad75c8b",
+    "derivedFrom": ["Pramaan-Dev/product-loop@370419379645405019af029fa08a75680ad75c8b"],
+    "upstreamNotices": ["NOTICE.md"],
+    "writtenBy": "person"
+  },
+  "measured": {
+    "on": "2026-11-14",
+    "by": "person",
+    "draft": {
+      "peakMiB": 1174,
+      "limitMiB": 2560,
+      "firstAnswerSeconds": 6
+    },
+    "verifier": {
+      "peakMiB": 1088,
+      "limitMiB": 2048,
+      "seconds": 12
+    },
+    "browser": {
+      "peakMiB": 167,
+      "limitMiB": 1024
+    }
+  },
+  "entryPoints": [
+    {
+      "route": "/",
+      "file": "app/page.tsx",
+      "audience": "visitor",
+      "summary": "Browse the public menu and choose a pickup slot."
+    },
+    {
+      "route": "/signin",
+      "file": "app/signin/page.tsx",
+      "audience": "visitor",
+      "summary": "Sign in or create a customer account."
+    },
+    {
+      "route": "/orders",
+      "file": "app/orders/page.tsx",
+      "audience": "customer",
+      "summary": "See only your own orders."
+    },
+    {
+      "route": "/status",
+      "file": "app/status/page.tsx",
+      "audience": "visitor",
+      "summary": "Follow an order through a private signed link."
+    },
+    {
+      "route": "/kitchen",
+      "file": "app/kitchen/page.tsx",
+      "audience": "kitchen",
+      "summary": "Move paid orders through their statuses."
+    },
+    {
+      "route": "/manage",
+      "file": "app/manage/page.tsx",
+      "audience": "owner",
+      "summary": "Edit the menu, slots, staff and statuses; import and export CSV."
+    },
+    {
+      "route": "/owner",
+      "file": "app/owner/page.tsx",
+      "audience": "owner",
+      "summary": "Set owner sign-in details."
+    }
+  ],
+  "roles": {
+    "owner": {
+      "source": "owner-pass",
+      "summary": "Manages menu, hours, capacity, statuses and staff."
+    },
+    "kitchen": {
+      "source": "added-by-owner",
+      "summary": "Signs in to the order board only."
+    },
+    "customer": {
+      "source": "public-sign-up",
+      "summary": "Signs in with the starter member role and sees only their own orders."
+    },
+    "visitor": {
+      "source": "anonymous",
+      "summary": "Browses and orders as a guest, following a signed order link."
+    }
+  },
+  "journeys": [
+    {
+      "id": "browse-menu",
+      "role": "visitor",
+      "summary": "Browse the menu and opening hours.",
+      "status": "ships-working",
+      "checklist": "journeys/browse-menu.json"
+    },
+    {
+      "id": "manage-menu",
+      "role": "owner",
+      "summary": "Edit categories, items, options and choices.",
+      "status": "ships-working",
+      "checklist": "journeys/manage-menu.json"
+    },
+    {
+      "id": "pickup-capacity",
+      "role": "owner",
+      "summary": "Manage opening hours and pickup slot capacity.",
+      "status": "ships-working",
+      "checklist": "journeys/pickup-capacity.json"
+    },
+    {
+      "id": "edit-statuses",
+      "role": "owner",
+      "summary": "Edit order statuses and keep values in use.",
+      "status": "ships-working",
+      "checklist": "journeys/edit-statuses.json"
+    },
+    {
+      "id": "add-kitchen-staff",
+      "role": "owner",
+      "summary": "Add a staff account with kitchen-only access.",
+      "status": "ships-working",
+      "checklist": "journeys/add-kitchen-staff.json"
+    },
+    {
+      "id": "kitchen-board",
+      "role": "owner",
+      "summary": "See the paid order board.",
+      "status": "ships-working",
+      "checklist": "journeys/kitchen-board.json"
+    },
+    {
+      "id": "owner-settings",
+      "role": "owner",
+      "summary": "Open owner settings through a one-time owner pass.",
+      "status": "ships-working",
+      "checklist": "journeys/owner-settings.json"
+    },
+    {
+      "id": "customer-account",
+      "role": "visitor",
+      "summary": "Create an account and see only your own orders.",
+      "status": "ships-working",
+      "checklist": "journeys/customer-account.json"
+    },
+    {
+      "id": "signed-out",
+      "role": "visitor",
+      "summary": "A signed-out visitor sees no order list.",
+      "status": "ships-working",
+      "checklist": "journeys/signed-out.json"
+    },
+    {
+      "id": "guest-checkout",
+      "role": "visitor",
+      "summary": "A guest orders with options and pays through a test checkout.",
+      "status": "needs-capability",
+      "capability": "external_http"
+    },
+    {
+      "id": "order-status-link",
+      "role": "visitor",
+      "summary": "The signed order page shows a paid order move to Ready.",
+      "status": "needs-capability",
+      "capability": "external_http"
+    },
+    {
+      "id": "order-emails",
+      "role": "customer",
+      "summary": "Receive confirmation and ready-for-pickup emails.",
+      "status": "needs-capability",
+      "capability": "email"
+    },
+    {
+      "id": "item-photos",
+      "role": "owner",
+      "summary": "Upload and display menu photos.",
+      "status": "needs-capability",
+      "capability": "file_storage"
+    },
+    {
+      "id": "menu-csv",
+      "role": "owner",
+      "summary": "Import and export the menu including options and choices.",
+      "status": "not-testable",
+      "reason": "The checklist cannot inspect CSV downloads; Postgres tests and the headless walk verify the contents."
+    },
+    {
+      "id": "orders-csv",
+      "role": "owner",
+      "summary": "Export orders and order lines.",
+      "status": "not-testable",
+      "reason": "The checklist cannot inspect CSV downloads; Postgres tests and the headless walk verify the contents."
+    }
+  ],
+  "capabilities": [
+    "accounts",
+    "server_data",
+    "roles",
+    "email",
+    "file_storage",
+    "external_http",
+    "file_input",
+    "download"
+  ],
+  "notIncluded": [
+    "Payments require the platform capability door connected to a test account, and PRAMAAN_PAYMENTS_MODE=test; no live payments.",
+    "Email and files modules are off by default.",
+    "Currency is GBP; opening hours and pickup slots use UTC.",
+    "Pending or ambiguous checkouts hold capacity conservatively; automatic expiry and abandoned-checkout reconciliation are not included.",
+    "No delivery, refunds, taxes, discounts or inventory counts; sold-out flags are owner controlled.",
+    "Customer accounts use the starter member role. Guest orders are not automatically attached to later signups.",
+    "Status links expire after seven days.",
+    "Menu CSV imports at most 100 rows and 12,000 characters per batch, updating by names; photo files are separate.",
+    "Staff accounts use owner-set passwords; password reset and staff removal are not included."
+  ],
+  "protectedPaths": [
+    "lib/accounts.ts",
+    "lib/ordering/links.ts",
+    "lib/ordering/payments.ts",
+    "lib/ordering/store.ts"
+  ]
+}

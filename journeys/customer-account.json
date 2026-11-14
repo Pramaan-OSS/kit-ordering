@@ -1,0 +1,17 @@
+{
+  "items": [
+    {
+      "id": "customer-account",
+      "label": "Create an account and see only your own orders.",
+      "steps": [
+        {
+          "goto": "/signin"
+        },
+        {
+          "expectHeading": "Sign in"
+        }
+      ]
+    }
+  ],
+  "names": {}
+}
