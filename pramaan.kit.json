@@ -1,6 +1,6 @@
 {
   "id": "ordering",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "title": "Online ordering",
   "summary": "A cafe takes pickup orders with options, test checkout and a live kitchen board.",
   "category": "business-operations",
