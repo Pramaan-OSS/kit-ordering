@@ -53,11 +53,14 @@ async function person(role: string) {
   );
   return { id, cookie: `app_session=${token}` };
 }
+// Midday UTC two days out, one second apart: always inside the seeded opening hours (which close at 23:59) and
+// never a duplicate start time, whatever the clock says when the suite runs.
+let slots = 0;
 async function slot(capacity = 10) {
   const id = randomUUID();
   await db.query(
-    "INSERT INTO pickup_slots VALUES($1,now()+interval '2 days'+$2*interval '1 second',$3)",
-    [id, Math.floor(Math.random() * 30000), capacity],
+    "INSERT INTO pickup_slots VALUES($1,date_trunc('day',now(),'UTC')+interval '2 days 12 hours'+$2*interval '1 second',$3)",
+    [id, ++slots, capacity],
   );
   return id;
 }
@@ -104,8 +107,11 @@ async function paid() {
 }
 beforeAll(async () => {
   await db.query(
-    "TRUNCATE order_line_choices,order_mail,order_lines,orders,pickup_slots,app_sessions,app_owner_passes,app_users CASCADE",
+    "TRUNCATE order_line_choices,order_mail,order_lines,orders,pickup_slots,app_sessions,app_owner_passes,app_auth_throttle,app_users CASCADE",
   );
+  // A run stopped half-way can leave the menu sold out or the kitchen closed.
+  await db.query("UPDATE menu_items SET sold_out=false");
+  await db.query("UPDATE opening_hours SET closed=false");
   door = await startFakeDoor({ dir });
   owner = (await person("owner")).cookie;
   kitchen = (await person("kitchen")).cookie;

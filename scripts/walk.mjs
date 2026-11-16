@@ -6,7 +6,7 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 
 // The kit carries the starter's package.json, which has no browser tools: point WALK_BROWSER_MODULE at an installed
-// @playwright/test (its index.js) to run this walk.
+// @playwright/test (its index.mjs) to run this walk.
 const browserModule = process.env.WALK_BROWSER_MODULE;
 const { chromium, expect } = await import(
   browserModule ? pathToFileURL(browserModule).href : "@playwright/test"

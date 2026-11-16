@@ -14,4 +14,4 @@ Checks: `pnpm typecheck`, `pnpm lint` (clean archive), `pnpm test` against a mig
 
 Unpaid checkouts conservatively hold capacity. Do not delete or release pending orders based on a browser cancellation or elapsed time: the payment might still settle. No refunds, delivery, taxes or stock counts. See KIT.md for extension points and GAPS.md for platform dependencies.
 
-The kit carries no browser tools. To run `node scripts/walk.mjs`, install `@playwright/test` 1.64.1 outside the kit and set `WALK_BROWSER_MODULE` to its `index.js`.
+The kit carries no browser tools. To run `node scripts/walk.mjs`, install `@playwright/test` 1.64.1 outside the kit and set `WALK_BROWSER_MODULE` to its `index.mjs`.
